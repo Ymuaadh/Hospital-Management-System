@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            {% if not user.is_authenticated %}
+                <div class="col-md-6"></div>
+                <div class="col-md-6 pl-3 pt-5">
+                <div class="card">
+                    <form action="{% url 'login' %}?next={{ next }}" method="post">
+                        {% csrf_token %}
+                        {% if message %}
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                        <div class="card-body bg-light">
+                            <div class="text-center pt-4">
+                                <img src="{% static 'ams/images/logo2.png' %}" alt="logo" height="85px"
+                                     width="80px">
+                            </div>
+                            <div class="pt-3 text-center pb-3 home-text">
+                                <h3 class="text-primary"></h3>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <h5 class="text-primary">LOGIN</h5>
+                            </div>
+                            <div class="form-row pt-3">
+                                <div class="form-group col-11 m-auto">
+                                    <label class="form-check-label text-dark" for="username">Username:</label>
+                                    <input name="username" id="username" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-row pt-3">
+                                <div class="form-group col-11 m-auto">
+                                    <label class="form-check-label text-dark" for="password">Password:</label>
+                                    <input name="password" id="password" class="form-control" type="password">
+                                </div>
+                            </div>
+                            <div class="text-center pt-4">
+                                <button type="submit" class="btn btn-primary text-light align-content-center">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-2">
+                    <p class="text-center">We are here to help you to get the best out of your money, no strings
+                        attached. Welcome to freedom!</p>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="#">
+                                <img class="img-size pl-2" alt="apple" src="{% static 'ams/images/apple-play.png' %}">
+                            </a>
+                        </div>
+
+                        <div class="col-6">
+                            <a href="#">
+                                <img class="img-size pr-2" alt="play-store"
+                                     src="{% static 'ams/images/play-store.png' %}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+{#                <div class="col-md-6"></div>#}
+{#                <div class="col-md-6 pl-3 pt-5">#}
+{#                <div class="table">#}
+                <div class="container-fluid col-md-12">
+                   <div style="background-color: #00b9eb; margin-top: 7in; width: 60vmax; height: 50vmin" id="container">
+                    <div class="row">
+                        <div class="col-md-4 " id="div1"><h2>The Konoha Bank</h2>
+                            <p>Konoha Bank is one of the most prolific and fast- growing banks in the world. Originally
+                            focused on software design, Kawaki pays a royalty on relevant books directly to open source
+                            projects. These projects have received over $400,000 as part of Packt's Open Source Royalty
+                            Scheme to date.
+                                </p></div>
+                        <div class="col-md-4" id="div2"><h2>Banking made easy</h2>
+                            <p>Packed Publishing is a young, ground-breaking computer book publishing company with a large
+                            and
+                            fast-growing online customer base. With a highly ranked website and innovating constantly
+                            into
+                            new
+                            business areas, we are at the cutting-edge of digital publishing, web marketing and
+                            e-commerce
+                            development. Our unique strategy of publishing highly-focused and practical technical books
+                            on
+                            new
+                            and ground-breaking technologies has driven rapid growth and we are now poised for
+                            expansion.
+                            This
+                            can be seen from our recent move to new offices in the heart of Birmingham.</p></div>
+                        <div class="col-md-4" id="div3"><h2>Work for Konoha</h2>
+                            <p> konoha Bank has many branches across the country. Point of services are also available and
+                            make
+                            things easy for users of the bank </p></div>
+                    </div>
+                   </div>
+                </div>
+            </div>
+
+            {% endif %}
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row offset-2">
+        <div class="col-md-6">
+            <h2>Department Head List</h2>
+        </div>
+        <div class="col-md-6">
+            <input type="text" id="myInput" class="col-md-6" placeholder="Search...">
+        </div>
+    </div>
+    <table class="table table-hover table-responsive offset-2">
+        <thead>
+        <tr>
+            <th>User Name</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone</th>
+            <th>Gender</th>
+        </tr>
+        </thead>
+        {% for departmenthead in departmentheads %}
+            <tbody id="myTable">
+            <tr>
+                <td>{{ departmenthead.user_name }}</td>
+                <td>{{ departmenthead.first_name }}</td>
+                <td>{{ departmenthead.last_name }}</td>
+                <td>{{ departmenthead.phone_number }}</td>
+                <td>{{ departmenthead.gender }}</td>
+                <td>{{ departmenthead.id }}</td>
+{#                <td>#}
+{#                    <div class="btn-group">#}
+{#                        <a href="{% url 'patient_details' patient.id %}"#}
+{#                           class="btn btn-success">Details</a>#}
+{#                        <a href="{% url 'edit_patient_for_staff' patient.id %}"#}
+{#                           class="btn btn-warning">Edit</a>#}
+{#                    </div>#}
+{#                </td>#}
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

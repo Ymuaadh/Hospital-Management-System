@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hospital</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static '' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'admin/css/edit.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/bootstrap.css' %}">
+
+</head>
+
+<body id="asd">
+
+<nav class="navbar navbar-expand-lg p-3">
+    <a class="navbar-brand push-10 ml-2 text-light push-left" href="{% url 'home' %}"><img style="height: 32%; width: 30%"
+            src="{% static 'ams/images/logo2.png' %}" width="55" height="55"
+            class="d-inline-block align-top" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-light pr-5" href="{% url 'login' %}"> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light pr-5" href="{% url 'register_department_head' %}">Department Head</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled text-light" href="{% url 'make_appointment' %}" tabindex="-1" aria-disabled="true">Make Appointment</a>
+            </li>
+        </ul>
+
+
+        <div class="form-inline my-2 my-lg-0">
+            <a class="btn btn-primary my-2 my-sm-0 push-left" href="{% url 'register_patient' %}">Get
+                Account</a>
+        </div>
+
+        <div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light push-left" href="#" id="navbarDropdown"
+                           role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Welcome {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+    </div>
+</nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+<script src="{% static 'admin/jquery/jquery.js' %}"></script>
+<script src="{% static 'admin/js/bootstrap.js' %}"></script>
+
+
+</body>
+
+</html>

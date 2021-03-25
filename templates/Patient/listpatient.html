@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row offset-2">
+        <div class="col-md-6">
+            <h2>Patient List</h2>
+        </div>
+        <div class="col-md-6">
+            <input type="text" id="myInput" class="col-md-6" placeholder="Search...">
+        </div>
+    </div>
+    <table class="table table-hover table-responsive offset-2">
+        <thead>
+        <tr>
+            <th>User Name</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Patient Id</th>
+            <th>Genotype</th>
+            <th>Blood Group</th>
+        </tr>
+        </thead>
+        {% for patient in patients %}
+            <tbody id="myTable">
+            <tr>
+                <td>{{ patient.user_name }}</td>
+                <td>{{ patient.first_name }}</td>
+                <td>{{ patient.last_name }}</td>
+                <td>{{ patient.phone_number }}</td>
+                <td>{{ patient.gender }}</td>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.genotype }}</td>
+                <td>{{ patient.blood_group }}</td>
+{#                <td>#}
+{#                    <div class="btn-group">#}
+{#                        <a href="{% url 'patient_details' patient.id %}"#}
+{#                           class="btn btn-success">Details</a>#}
+{#                        <a href="{% url 'edit_patient_for_staff' patient.id %}"#}
+{#                           class="btn btn-warning">Edit</a>#}
+{#                    </div>#}
+{#                </td>#}
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

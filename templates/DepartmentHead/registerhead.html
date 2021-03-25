@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row mt_130 mx-auto">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="">Department Head Registration</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'register_department_head' %}">
+                            {% if saved is False %}
+                                <script>
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Sorry',
+                                        text: 'Make sure the form is filled correctly'
+                                    });
+                                </script>
+                            {% elif saved is True %}
+                                <script>
+                                    swal.fire({
+                                        icon: 'success',
+                                        title: 'Congratulation!',
+                                        text: 'Congrts. Visit your profile to Book Appointment!'
+                                    })
+                                </script>
+                            {% endif %}
+                            {% csrf_token %}
+                            <div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="first_name" class="form-check-label">First Name:</label>
+                                        <input name="first_name" class="form-control" type="text"
+                                               value="{{ user.first_name }}" id="first_name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="last_name" class="form-check-label">Last Name:</label>
+                                        <input name="last_name" class="form-control" type="text"
+                                               value="{{ user.last_name }}" id="last_name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="email" class="form-check-label">Email</label>
+                                        <input name="email" class="form-control" type="email" value="{{ user.email }}"
+                                               id="email">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="username" class="form-check-label">Username:</label>
+                                        <input name="username" class="form-control" type="text"
+                                               value="{{ user.username }}" id="username">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="form-check-label">Password:</label>
+                                    <input name="password" class="form-control" type="password" id="password"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm_password" class="form-check-label">Confirm password</label>
+                                    <input name="confirm_password" class="form-control" type="password"
+                                           id="confirm_password" value="">
+                                    <span class="text-info" id="message"></span>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="phone" class="form-check-label">Phone:</label>
+                                        <input name="phone" class="form-control" type="tel" value="{{ patient.phone }}"
+                                               id="phone">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="date_of_birth" class="form-check-label">Date Of Birth:</label>
+                                        <input name="date_of_birth" class="form-control"
+                                               value="{{ department_head.date_of_birth }}" id="date_of_birth" type="date">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="gender" class="form-check-label">Gender:</label>
+                                        <select name="gender" class="form-control" id="gender" type="text">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="address" class="form-check-label">Address:</label>
+                                        <input name="address" class="form-control" value="{{ patient.address }}"
+                                               id="address" type="text">
+                                </div>
+                                <div class="form-group" hidden>
+                                    <label for="department_head_id" class="">Department Head ID</label>
+                                    <input name="patient_id" class="form-control disabled" id="patient_id" type="text"
+                                           value="{{ department_head_id }}" readonly>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success float-right" id="submit-button">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
